@@ -11,47 +11,56 @@
 
 $Canned_Searches = array(
 
-    t('New Titles, Premieres')                              // See proglist.cpp
-        => 'program.manualid = 0'
-         . ' AND ('
-         . '   (program.previouslyshown = 0'
-         . '     AND (program.category = "Special"'
-         . '       OR program.programid LIKE "EP%0001"'
-         . '       OR (program.category_type = "series"'
-         . '         AND program.subtitle = "Pilot"))'
-         . '     AND DAYOFYEAR(program.originalairdate) ='
-         . '         DAYOFYEAR(program.starttime))'
-         . '   OR (program.category_type="movie"'
-         . '     AND program.stars > 0.5'
-         . '     AND program.airdate >= YEAR(NOW()) - 3)'
-         . ' )',
+    t('Horror Movies of the Thirties and Forties')
+        => 'category_type="movie"
+            AND (program.category="Horror" or program.category="Suspense" or program.category="Mystery")'
+         .' AND (program.airdate like "193%" or program.airdate like "194%")',
 
-    t('Movies')
-        => 'category_type="movie"',
+    t('Pre-Code Movies')
+        => 'category_type="movie"'
+         .' AND program.airdate < "1935"',
 
-    t('Movies, 3&frac12; Stars or more')
-        => 'category_type="movie" AND program.stars > 0.8',
+    // t('New Titles, Premieres')                              // See proglist.cpp
+    //     => 'program.manualid = 0'
+    //      . ' AND ('
+    //      . '   (program.previouslyshown = 0'
+    //      . '     AND (program.category = "Special"'
+    //      . '       OR program.programid LIKE "EP%0001"'
+    //      . '       OR (program.category_type = "series"'
+    //      . '         AND program.subtitle = "Pilot"))'
+    //      . '     AND DAYOFYEAR(program.originalairdate) ='
+    //      . '         DAYOFYEAR(program.starttime))'
+    //      . '   OR (program.category_type="movie"'
+    //      . '     AND program.stars > 0.5'
+    //      . '     AND program.airdate >= YEAR(NOW()) - 3)'
+    //      . ' )',
 
-    t('Movies, Stinkers (2 Stars or less)')
-        => 'category_type="movie" AND program.stars < 0.5625'
-          .' AND program.stars > 0.0',
+    // t('Movies')
+    //     => 'category_type="movie"',
 
-    t('Children\'s Movies')
-        => 'category="children" AND category_type="movie"',
+    // t('Movies, 3&frac12; Stars or more')
+    //     => 'category_type="movie" AND program.stars > 0.8',
 
-    t('Non-Series HDTV')
-        => 'hdtv & 1 AND category_type != "series"',
+    // t('Movies, Stinkers (2 Stars or less)')
+    //     => 'category_type="movie" AND program.stars < 0.5625'
+    //       .' AND program.stars > 0.0',
 
-    t('All HDTV')
-        => 'hdtv & 1',
+    // t('Children\'s Movies')
+    //     => 'category="children" AND category_type="movie"',
 
-    t('Non-Music Specials')
-        => 'showtype="special" AND program.category NOT LIKE "music%"',
+    // t('Non-Series HDTV')
+    //     => 'hdtv & 1 AND category_type != "series"',
 
-    t('Music Specials')
-        => 'showtype="special" AND program.category LIKE "music%"',
+    // t('All HDTV')
+    //     => 'hdtv & 1',
 
-    t('Science Fiction Movies')
-        => 'category_type="movie" AND program.category="science fiction"',
+    // t('Non-Music Specials')
+    //     => 'showtype="special" AND program.category NOT LIKE "music%"',
+
+    // t('Music Specials')
+    //     => 'showtype="special" AND program.category LIKE "music%"',
+
+    // t('Science Fiction Movies')
+    //     => 'category_type="movie" AND program.category="science fiction"',
 
     );
